@@ -8,6 +8,7 @@
  * For more information on configuration, check out:
  * http://sailsjs.org/#!/documentation/reference/sails.config/sails.config.http.html
  */
+var express = require('express');
 
 module.exports.http = {
 
@@ -20,9 +21,18 @@ module.exports.http = {
   * `customMiddleware` config option.                                         *
   *                                                                           *
   ****************************************************************************/
-
+/*  bootstrapAssets : function(app) {
+    console.log('hi');
+    // app.use(express.static('node_modules/bootstrap/dist'));
+  },*/
   middleware: {
 
+    passportInit    : require('passport').initialize(),
+    passportSession : require('passport').session(),
+
+    bootstrapAssets : express.static('node_modules/bootstrap/dist'),
+
+    
   /***************************************************************************
   *                                                                          *
   * The order in which middleware should be run for HTTP request. (the Sails *
@@ -30,23 +40,26 @@ module.exports.http = {
   *                                                                          *
   ***************************************************************************/
 
-    // order: [
-    //   'startRequestTimer',
-    //   'cookieParser',
-    //   'session',
-    //   'myRequestLogger',
-    //   'bodyParser',
-    //   'handleBodyParserError',
-    //   'compress',
-    //   'methodOverride',
-    //   'poweredBy',
-    //   '$custom',
-    //   'router',
-    //   'www',
-    //   'favicon',
-    //   '404',
-    //   '500'
-    // ],
+    order: [
+      'startRequestTimer',
+      'cookieParser',
+      'session',
+      'bootstrapAssets',
+      'passportInit',
+      'passportSession',
+      'myRequestLogger',
+      'bodyParser',
+      'handleBodyParserError',
+      'compress',
+      'methodOverride',
+      'poweredBy',
+      '$custom',
+      'router',
+      'www',
+      'favicon',
+      '404',
+      '500'
+    ],
 
   /****************************************************************************
   *                                                                           *
@@ -90,4 +103,5 @@ module.exports.http = {
   ***************************************************************************/
 
   // cache: 31557600000
+
 };

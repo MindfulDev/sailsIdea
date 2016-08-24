@@ -34,7 +34,7 @@ module.exports.routes = {
 
   '/': {
     view: 'homepage'
-  }
+  },
 
   /***************************************************************************
   *                                                                          *
@@ -46,4 +46,27 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
+
+  'get /login': {
+    view: 'login'
+  },
+
+  'post /login': 'AuthController.login',
+
+  '/logout': 'AuthController.logout',
+
+  'get /signup': {
+    view: 'signup'
+  },
+  'post /signup':'AuthController.signup',
+
+  'get /test' : 'AuthController.test',
+
+  'get /ideas' : 'IdeasController.root',
+  
+  '/addIdea' : 'AuthController.addIdea',
+  '/getIdea' : 'AuthController.getIdea',
+  '/getIdeas' : 'AuthController.getIdeas',
+  '/removeIdea' : 'AuthController.removeIdea',
+  '/updateIdea' : 'AuthController.updateIdea'
 };

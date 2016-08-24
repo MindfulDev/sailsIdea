@@ -1,0 +1,20 @@
+doctype html
+html(lang='en')
+    head
+        meta(charset='UTF-8')
+        meta(http-equiv='X-UA-Compatible', content='IE=edge')
+        meta(name='viewport', content='width=device-width, initial-scale=1')
+        title= pageTitle
+        link(rel='stylesheet', href='/css/bootstrap.min.css')
+        link(rel='stylesheet', href='/css/style.css')
+    body
+        nav.navbar.navbar-inverse.navbar-static-top
+            .container
+                #navbar.collapse.navbar-collapse.navbar-right
+                    ul.nav.navbar-nav
+                        li
+                            a(href="/logout") Logout
+
+        .container
+            .main-content
+               block content

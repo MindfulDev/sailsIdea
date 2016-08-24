@@ -1,0 +1,14 @@
+extends ../layout.pug
+
+block content
+    h1 Add #{opt.model}
+
+    form(method="post")
+        each field in opt.fields
+            if field != '_id'
+                fieldset.form-group
+                    label(for=field)=field
+                    input.form-control(name=field, type="text")
+
+        button.btn.btn-primary(type="submit") Save
+        a.btn.btn-default(href="/idea/list") Cancel

@@ -1,0 +1,15 @@
+table.table.table-bordered
+    th
+    each field in opt.fields
+        if field != '_id'
+            th=field
+    each post in posts
+        tr(data-id=post._id)
+            td(style="width: 50px;"): a(href='edit/' + post._id)
+                span.glyphicon.glyphicon-pencil
+                a(href='delete/' + post._id)
+                    span.glyphicon.glyphicon-remove
+            each field in opt.fields
+                if field != '_id'
+                    td(data-field=field)
+                        = post[field]
