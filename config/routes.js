@@ -60,13 +60,12 @@ module.exports.routes = {
   },
   'post /signup':'AuthController.signup',
 
-  'get /test' : 'AuthController.test',
 
   'get /ideas' : 'IdeasController.root',
   
-  '/addIdea' : 'AuthController.addIdea',
-  '/getIdea' : 'AuthController.getIdea',
-  '/getIdeas' : 'AuthController.getIdeas',
-  '/removeIdea' : 'AuthController.removeIdea',
-  '/updateIdea' : 'AuthController.updateIdea'
+  '/addIdea' : 'TestController.addIdea',
+  '/getIdea' : 'TestController.getIdea',
+  '/getIdeas' : 'TestController.getIdeas',
+  '/removeIdea' : 'TestController.removeIdea',
+  '/updateIdea' : 'TestController.updateIdea'
 };

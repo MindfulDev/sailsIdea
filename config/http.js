@@ -32,6 +32,13 @@ module.exports.http = {
 
     bootstrapAssets : express.static('node_modules/bootstrap/dist'),
 
+    addUserToView   : function (req, res, next) {
+      if (req.isAuthenticated()) {
+        res.locals.user = req.user;
+      }
+      next();
+    },
+
     
   /***************************************************************************
   *                                                                          *
@@ -47,6 +54,7 @@ module.exports.http = {
       'bootstrapAssets',
       'passportInit',
       'passportSession',
+      'addUserToView',
       'myRequestLogger',
       'bodyParser',
       'handleBodyParserError',

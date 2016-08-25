@@ -23,6 +23,43 @@ switched the query to User.findOne({ id: ObjectID(id) }  (after var ObjectID = r
   The 'solution' was to change the id type to objectid and keep primaryKey as true.  Waterline then mapped the id correctly...but Waterline is supposed to be db 
   agnostic so I wonder if my models would work on a different db.
   
+  After trying to add an idea associated with a user and getting
+  Invalid attributes sent to User:
+   • id
+     • [object Object]
+     when saving
+  
+  The new 'solution' was to remove the definition for id in both models.  Then everything worked.
+ 
+## Using request.user object ##
+I thought one had to search using the User model to create a user object we could add an object to a collection and save.  It turns out we can just use the request.user object directly.
+Here's the previous code:
+```
+                User.findOne( { id : req.user.id })
+                    .then( (user) => {
+                        if (! user) { return res.notFound( "User Not Found"); }
+                        Idea.create({ title: title || '', detail: detail || ''})
+                            .then( (idea) => {
+                                user.ideas.add(idea);
+                                user.save()
+                                    .then ( () => res.json(idea) )
+                                    .catch( (err) => { res.serverError(err) });
+                            })
+                            .catch( (err) => res.serverError(err));
+                      })
+                    .catch((err) => { res.serverError(err) });
+```
+Here's the new code:
+```
+            Idea.create({ title: title || '', detail: detail || ''})
+                .then( (idea) => {
+                    req.user.ideas.add(idea);
+                    req.user.save()
+                        .then ( () => res.json(idea) )
+                        .catch( (err) => { res.serverError(err) });
+                })
+                .catch( (err) => res.serverError(err));
+```
 ## Basic Notes ##
 Pass data to views use the response.locals object
 data from request:

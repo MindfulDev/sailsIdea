@@ -1,7 +1,7 @@
 extends ./layout.pug
 
 block content
-    .container
+    .container-fluid
         .main-content.row
             .col-md-4.col-md-offset-4
                 form(action='/login', method='post')
@@ -13,4 +13,7 @@ block content
                         input.form-control(type='password', name='password')
                     .form-group
                         input.btn.btn-primary(type='submit', value='Log In')
-
+    if data
+        .row
+            .col-md-4.col-md-offset-4
+                .alert.alert-danger=data.message

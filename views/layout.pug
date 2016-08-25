@@ -13,8 +13,10 @@ html(lang='en')
                 #navbar.collapse.navbar-collapse.navbar-right
                     ul.nav.navbar-nav
                         li
-                            a(href="/logout") Logout
-
+                            if user
+                                a(href="/logout") Logout
+                            else
+                                a(href="/login") Login
         .container
             .main-content
                block content

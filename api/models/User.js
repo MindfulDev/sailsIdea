@@ -30,8 +30,8 @@ module.exports = {
     },
     password: {
       type: 'string',
-   //   minLength: 6,
-  //    required: true
+      minLength: 6,
+      required: true
     },
     ideas: {
       collection: 'idea',

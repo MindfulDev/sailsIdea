@@ -7,13 +7,13 @@
 
 module.exports = {
     root : function (req, res) {
-        Idea.find().exec( function(err,posts) {
+        Idea.find().populate('userId').exec( function(err,posts) {
             res.locals.posts = posts;
             res.locals.opt = {};
             if (req.user) {
                 res.locals.opt.user = req.user;
             }
-            res.locals.opt.fields = ['title', 'detail'];
+            res.locals.opt.fields = ['title', 'detail', 'userId.email'];
             res.view('idea/list.pug');
         })
     }

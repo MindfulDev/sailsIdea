@@ -1,0 +1,14 @@
+extends ./layout.pug
+
+block content
+    .container-fluid
+        .row
+            .col-md-10.col-md-offset-1.jumbotron
+                h1 Welcome to Ideas
+                p This is where we spout a bunch of stuff about the coolness of this app
+                p Maybe even exaggerating a bit
+        .row
+            .col-md-3.col-md-offset-3.text-center
+                a.btn.btn-primary.btn-lg(href="/login") login
+            .col-md-3.col-md-offset-1
+                a.btn.btn-info.btn-lg(href="/signup") signup

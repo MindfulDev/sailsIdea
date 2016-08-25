@@ -12,4 +12,9 @@ table.table.table-bordered
             each field in opt.fields
                 if field != '_id'
                     td(data-field=field)
-                        = post[field]
+                        if (field.indexOf('.') !== -1)
+                            - var sub = field.split('.')
+                            if post[sub[0]]
+                                =post[sub[0]]['email']
+                        else
+                            =post[field]
