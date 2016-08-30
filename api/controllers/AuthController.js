@@ -22,7 +22,7 @@ module.exports = {
         passport.authenticate('local', function(err, user, info) {
             if ((err) || (!user)) {
 
-                return res.notFound(new Error('Unknown user'), 'login');
+                return res.redirect('login');
             }
             req.logIn(user, function(err) {
                 if (err) res.send(err);                

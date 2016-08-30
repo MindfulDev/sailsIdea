@@ -32,7 +32,7 @@
   },
   "scripts": {
     "debug": "node debug app.js",
-    "start": "sails lift",
+    "start": "node app.js --prod",
     "devstart" : "node -r dotenv/config app.js"
   },
   "main": "app.js",
