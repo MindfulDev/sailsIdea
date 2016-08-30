@@ -104,7 +104,7 @@ module.exports = {
                     .then((idea) => {
                         if (!idea) {
                             return res.notFound("Idea not found");
-                        } else if (!req.user && idea.userId != req.user.id) {   //TODO OR logged in user not admin role
+                        } else if (!req.user || idea.userId != req.user.id) {   //TODO OR logged in user not admin role
                             return res.forbidden("Idea not yours to remove");
                         } else {
                             Idea.destroy({id: ideaId})
