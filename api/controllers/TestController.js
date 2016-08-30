@@ -103,7 +103,7 @@ module.exports = {
                     if( ! idea ) {
                         return res.badRequest("idea not found");
                     } else {
-                        if (idea.userId != req.user.id ) {   //TODO OR logged in user not admin role
+                        if ( !req.user || idea.userId != req.user.id ) {   //TODO OR logged in user not admin role
                             return res.forbidden("Idea not yours to update");
                         }
                         idea.title = title?title:idea.title;

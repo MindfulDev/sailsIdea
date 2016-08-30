@@ -38,6 +38,10 @@ module.exports.http = {
       }
       next();
     },
+    addOptionsToView   : function (req, res, next) {
+      res.locals.opt = {};
+      next();
+    },
 
     
   /***************************************************************************
@@ -55,6 +59,7 @@ module.exports.http = {
       'passportInit',
       'passportSession',
       'addUserToView',
+      'addOptionsToView',
       'myRequestLogger',
       'bodyParser',
       'handleBodyParserError',

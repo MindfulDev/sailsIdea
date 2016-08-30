@@ -51,21 +51,26 @@ module.exports.routes = {
     view: 'login'
   },
 
+  //AuthController
   'post /login': 'AuthController.login',
-
   '/logout': 'AuthController.logout',
-
   'get /signup': {
     view: 'signup'
   },
   'post /signup':'AuthController.signup',
 
-
+  // IdeasController
   'get /ideas' : 'IdeasController.root',
+  '/ideas/edit/:id' : 'IdeasController.edit',
+  '/ideas/add' : 'IdeasController.add',
+  '/ideas/delete/:id' : 'IdeasController.delete',
   
+  //TESTING
   '/addIdea' : 'TestController.addIdea',
   '/getIdea' : 'TestController.getIdea',
   '/getIdeas' : 'TestController.getIdeas',
   '/removeIdea' : 'TestController.removeIdea',
   '/updateIdea' : 'TestController.updateIdea'
+  
+  
 };

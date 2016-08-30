@@ -8,10 +8,8 @@ A node app to record and share ideas
 
 
 
-
-
 ## Changes ##
-  * ## 206.08.25
+  * ## 2016.08.25
   * Authentication works - But no policies enabled to prevent viewing - yet.
   * Moved actions that tested existing model queries and associations to TestController
   * Added middleware to put the user info automatically in response if logged in for menu views

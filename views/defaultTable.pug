@@ -1,20 +1,20 @@
 table.table.table-bordered
     th
     each field in opt.fields
-        if field != '_id'
+        if field != 'id'
             th=field
     each post in posts
-        tr(data-id=post._id)
-            td(style="width: 50px;"): a(href='edit/' + post._id)
+        tr(data-id=post.id)
+            td(style="width: 50px;"): a(href='ideas/edit/' + post.id)
                 span.glyphicon.glyphicon-pencil
-                a(href='delete/' + post._id)
+                a(href='ideas/delete/' + post.id)
                     span.glyphicon.glyphicon-remove
             each field in opt.fields
-                if field != '_id'
+                if field != 'id'
                     td(data-field=field)
                         if (field.indexOf('.') !== -1)
                             - var sub = field.split('.')
                             if post[sub[0]]
-                                =post[sub[0]]['email']
+                                =post[sub[0]][sub[1]]
                         else
                             =post[field]

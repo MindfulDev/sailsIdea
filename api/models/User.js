@@ -5,7 +5,6 @@
  * @docs        :: http://sailsjs.org/documentation/concepts/models-and-orm/models
  */
 var bcrypt = require('bcryptjs');
-var ObjectID = require('mongodb').ObjectID;
 
 module.exports = {
 
