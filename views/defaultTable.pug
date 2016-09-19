@@ -1,20 +1,20 @@
 table.table.table-bordered
     th
     each field in opt.fields
-        if field != 'id'
-            th=field
+        th
+            = field
     each post in posts
         tr(data-id=post.id)
-            td(style="width: 50px;"): a(href='ideas/edit/' + post.id)
-                span.glyphicon.glyphicon-pencil
+            td(style="width: 50px;")
+                a(href='ideas/edit/' + post.id)
+                    span.glyphicon.glyphicon-pencil
                 a(href='ideas/delete/' + post.id)
                     span.glyphicon.glyphicon-remove
             each field in opt.fields
-                if field != 'id'
-                    td(data-field=field)
-                        if (field.indexOf('.') !== -1)
-                            - var sub = field.split('.')
-                            if post[sub[0]]
-                                =post[sub[0]][sub[1]]
-                        else
-                            =post[field]
+                td(data-field=field)
+                    if (field.indexOf('.') !== -1)
+                        - const [obj, attr] = field.split('.')
+                        if post[obj]
+                            = post[obj][attr]
+                    else
+                        = post[field]
